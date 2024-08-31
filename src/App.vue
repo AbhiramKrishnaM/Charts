@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import * as echarts from "echarts";
+import heartIcon from "./assets/heart.svg";
 
 const chart = ref(null); // chart reference
 
@@ -14,21 +15,56 @@ function loadChart() {
       text: "",
     },
     tooltip: {
-      trigger: "axis",
+      trigger: "item",
       backgroundColor: "#fff",
-      borderColor: "#ddd",
-      borderWidth: 1,
+      borderWidth: 0,
+      extraCssText:
+        "box-shadow: 0px 20px 20px 0px rgba(208, 213, 221, 0.5); border-radius: 8px;",
       textStyle: {
         color: "#333",
       },
-      position: function (point, params, dom, rect, size) {
-        return [
-          point[0] - dom.offsetWidth / 2,
-          point[1] - dom.offsetHeight - 10,
-        ];
+
+      formatter: function (params) {
+        return `
+          <div id="tooltip">
+            <span style="font-size: 12px; font-weight: 400; color: #70707a">
+              ${params.data.date}
+            </span>
+            <div
+              id="value"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                margin-top: 7px;
+                padding: 8px;
+                border-radius: 8px;
+                background-color: #f4f4f5;
+                width: max-content;
+              "
+            >
+              <img src="${heartIcon}" alt="Heart Icon" />
+              <p style="font-size: 12px; font-weight: 500; color: #70707a">Score</p>
+              <span
+                style="
+                  font-size: 12px;
+                  font-weight: 500;
+                  line-height: 19.2px;
+                  color: #171717;
+                "
+              >
+               ${params.data.value}
+              </span>
+            </div>
+          </div>
+         </div>
+        `;
       },
+
+      position: "top",
       axisPointer: {
-        type: "none", // Remove the cross lines
+        type: "none",
       },
     },
     legend: {
@@ -109,7 +145,15 @@ function loadChart() {
             },
           ]),
         },
-        data: [220, 302, 181, 234, 210, 290, 150],
+        data: [
+          { value: 220, date: "Tuesday, Feb 1, 2022" },
+          { value: 302, date: "Wednesday, Feb 2, 2022" },
+          { value: 181, date: "Thursday, Feb 3, 2022" },
+          { value: 234, date: "Friday, Feb 4, 2022" },
+          { value: 210, date: "Saturday, Feb 5, 2022" },
+          { value: 290, date: "Sunday, Feb 6, 2022" },
+          { value: 150, date: "Monday, Feb 7, 2022" },
+        ],
       },
     ],
   };
