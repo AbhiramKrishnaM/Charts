@@ -3,7 +3,7 @@ import { ref, onMounted } from "vue";
 import * as echarts from "echarts";
 import heartIcon from "./assets/heart.svg";
 
-const chart = ref(null); // chart reference
+const chart = ref(null);
 
 function loadChart() {
   var myChart = echarts.init(chart.value);
@@ -76,7 +76,7 @@ function loadChart() {
       right: "4%",
       bottom: "3%",
       containLabel: true,
-      height: "40%",
+      // height: "40%",
     },
     xAxis: [
       {
@@ -169,7 +169,33 @@ onMounted(() => {
 
 <template>
   <div id="main">
-    <div ref="chart" style="width: 800px; height: 500px"></div>
+    <div style="height: 300px">
+      <div id="title">
+        <span style="font-size: 16px; font-weight: 500; color: #171717">
+          Health check progress
+        </span>
+        <div
+          id="percentage"
+          style="display: flex; align-items: center; gap: 8px; margin-top: 8px"
+        >
+          <p
+            style="
+              background: #dcfce7;
+              padding: 8px;
+              color: #16a34a;
+              border-radius: 100px;
+            "
+          >
+            +23%
+          </p>
+          <span style="font-size: 14px; font-weight: 400; color: #70707a"
+            >vs last month</span
+          >
+        </div>
+      </div>
+
+      <div ref="chart" style="width: 800px; height: 100%"></div>
+    </div>
   </div>
 </template>
 
