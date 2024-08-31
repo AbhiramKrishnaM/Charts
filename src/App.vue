@@ -46,7 +46,7 @@ function loadChart() {
       {
         type: "category",
         boundaryGap: false,
-        data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        data: ["Feb 1", "Feb 2", "Feb 3", "Feb 4", "Feb 5", "Feb 6", "Feb 7"],
         splitLine: {
           show: false,
         },
@@ -74,26 +74,26 @@ function loadChart() {
         stack: "Total",
         smooth: true,
         lineStyle: {
-          width: 2, // Line width
-          color: "#16A34A", // Line color
+          width: 2,
+          color: "#16A34A",
         },
-        showSymbol: true, // Show symbols
-        symbol: "circle", // Symbol type
-        symbolSize: 10, // Symbol size
+        showSymbol: true,
+        symbol: "circle",
+        symbolSize: 10,
         itemStyle: {
-          color: "#16A34A", // Green circle inside
-          borderColor: "rgba(255, 255, 255)", // Transparent white border
-          borderWidth: 4, // Border width for the circle
+          color: "#16A34A",
+          borderColor: "rgba(255, 255, 255)",
+          borderWidth: 4,
         },
         label: {
-          show: false, // Hide label on top of points
+          show: false,
         },
         emphasis: {
           focus: "series",
           itemStyle: {
-            color: "#16A34A", // Same as default color
-            borderColor: "rgba(255, 255, 255)", // Transparent white border
-            borderWidth: 4, // Border width for hover state
+            color: "#16A34A",
+            borderColor: "rgba(255, 255, 255)",
+            borderWidth: 4,
           },
         },
         areaStyle: {
@@ -101,11 +101,11 @@ function loadChart() {
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
             {
               offset: 0,
-              color: "rgba(40, 168, 89, 0.2)", // 20% opacity
+              color: "rgba(40, 168, 89, 0.2)",
             },
             {
               offset: 1,
-              color: "rgba(40, 168, 89, 0)", // 0% opacity
+              color: "rgba(40, 168, 89, 0)",
             },
           ]),
         },
