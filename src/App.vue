@@ -5,6 +5,45 @@ import heartIcon from "./assets/heart.svg";
 
 const chart = ref(null);
 
+function addTooltipStyles() {
+  const style = document.createElement("style");
+  style.innerHTML = `
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-5px);
+      }
+      50% {
+        transform: translateX(5px);
+      }
+      75% {
+        transform: translateX(-5px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .tooltip-shake {
+      animation: slideIn 0.3s ease-out, shake 0.5s ease;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 function loadChart() {
   var myChart = echarts.init(chart.value);
   var option;
@@ -26,40 +65,39 @@ function loadChart() {
 
       formatter: function (params) {
         return `
-          <div id="tooltip">
-            <span style="font-size: 12px; font-weight: 400; color: #70707a">
-              ${params.data.date}
-            </span>
-            <div
-              id="value"
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 6px;
-                margin-top: 7px;
-                padding: 8px;
-                border-radius: 8px;
-                background-color: #f4f4f5;
-                width: max-content;
-              "
-            >
-              <img src="${heartIcon}" alt="Heart Icon" />
-              <p style="font-size: 12px; font-weight: 500; color: #70707a">Score</p>
-              <span
-                style="
-                  font-size: 12px;
-                  font-weight: 500;
-                  line-height: 19.2px;
-                  color: #171717;
-                "
-              >
-               ${params.data.value}
-              </span>
-            </div>
-          </div>
-         </div>
-        `;
+    <div id="tooltip" class="tooltip-shake">
+      <span style="font-size: 12px; font-weight: 400; color: #70707a">
+        ${params.data.date}
+      </span>
+      <div
+        id="value"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          margin-top: 7px;
+          padding: 8px;
+          border-radius: 8px;
+          background-color: #f4f4f5;
+          width: max-content;
+        "
+      >
+        <img src="${heartIcon}" alt="Heart Icon" />
+        <p style="font-size: 12px; font-weight: 500; color: #70707a">Score</p>
+        <span
+          style="
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 19.2px;
+            color: #171717;
+          "
+        >
+          ${params.data.value}
+        </span>
+      </div>
+    </div>
+  `;
       },
 
       position: "top",
@@ -159,6 +197,7 @@ function loadChart() {
   };
 
   option && myChart.setOption(option);
+  addTooltipStyles();
 }
 
 // hooks
@@ -205,5 +244,42 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tooltip-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.tooltip-shake {
+  animation: shake 0.5s ease;
 }
 </style>
