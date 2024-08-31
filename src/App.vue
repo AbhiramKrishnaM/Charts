@@ -205,41 +205,4 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
 }
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.tooltip-slide-in {
-  animation: slideIn 0.3s ease-out;
-}
-
-@keyframes shake {
-  0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-5px);
-  }
-  50% {
-    transform: translateX(5px);
-  }
-  75% {
-    transform: translateX(-5px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.tooltip-shake {
-  animation: shake 0.5s ease;
-}
 </style>
