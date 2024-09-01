@@ -5,7 +5,7 @@ import Bars from "./components/Bars.vue";
 
 <template>
   <div id="main">
-    <!-- <Chart /> -->
+    <Chart />
     <Bars :activeValue="20" :totalValue="100" />
   </div>
 </template>
