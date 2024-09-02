@@ -147,7 +147,7 @@ function getTextColorClass(percentage) {
   flex-direction: column;
   gap: 24px;
   height: max-content;
-  max-width: 422px;
+  max-width: 384px;
 }
 
 table {

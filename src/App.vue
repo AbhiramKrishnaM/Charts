@@ -3,6 +3,7 @@ import Chart from "./components/Chart.vue";
 import AssetDiscovery from "./components/AssetDiscovery.vue";
 import Configs from "./components/Configs.vue";
 import ConfigHealth from "./components/ConfigHealth.vue";
+import ThreatExposure from "./components/ThreatExposure.vue";
 
 // configs data
 const configData = [
@@ -81,6 +82,28 @@ const topVendorsCoverage = [
     health: { percentage: 93, total: 213, value: 81, trend: "up" },
   },
 ];
+
+// threat exposure data
+const threatExposure = [
+  {
+    id: 0,
+    threat: "Evilnum",
+    total: 64,
+    remediations: 15,
+  },
+  {
+    id: 1,
+    threat: "DarkVishnya",
+    total: 60,
+    remediations: 18,
+  },
+  {
+    id: 2,
+    threat: "Mustard Tempest",
+    total: 58,
+    remediations: 25,
+  },
+];
 </script>
 
 <template>
@@ -93,6 +116,8 @@ const topVendorsCoverage = [
     </div>
 
     <ConfigHealth :data="topVendorsCoverage" />
+
+    <ThreatExposure :data="threatExposure" />
   </div>
 </template>
 
