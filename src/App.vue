@@ -1,20 +1,24 @@
 <script setup>
 import Chart from "./components/Chart.vue";
-import Bars from "./components/Bars.vue";
+import AssetDiscovery from "./components/AssetDiscovery.vue";
+import Configs from "./components/Configs.vue";
 </script>
 
 <template>
   <div id="main">
     <Chart />
-    <Bars :activeValue="20" :totalValue="100" />
+    <AssetDiscovery />
+
+    <Configs />
   </div>
 </template>
 
 <style scoped>
 #main {
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 16px;
 }
 </style>

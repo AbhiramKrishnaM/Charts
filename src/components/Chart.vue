@@ -167,7 +167,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div style="height: 300px">
+  <div class="container-wrapper">
     <div id="title">
       <span style="font-size: 16px; font-weight: 500; color: #171717">
         Health check progress
@@ -195,3 +195,16 @@ onMounted(() => {
     <div ref="chart" style="width: 800px; height: 100%"></div>
   </div>
 </template>
+
+<style scoped>
+.container-wrapper {
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #e4e4e7;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: max-content;
+  min-height: 314px;
+}
+</style>
