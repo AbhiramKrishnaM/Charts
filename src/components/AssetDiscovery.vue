@@ -63,7 +63,6 @@ const isActive = (button) => activeButton.value === button;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  height: max-content;
 }
 
 .main-title-text {
